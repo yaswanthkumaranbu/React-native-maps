@@ -1,12 +1,18 @@
 // HomeScreen.js
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 
 const HomeScreen = ({ navigation }) => {
-  const [vehicleID, setVehicleID] = React.useState('');
+  const [vehicleID, setVehicleID] = React.useState("");
 
   const handleContinue = () => {
-    navigation.navigate('NextPage', { vehicleID });
+    navigation.navigate("NextPage", { vehicleID });
   };
 
   return (
@@ -28,8 +34,8 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   label: {
@@ -38,21 +44,21 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    width: '100%',
-    borderColor: 'gray',
+    width: "100%",
+    borderColor: "gray",
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: "blue",
     padding: 10,
     borderRadius: 5,
   },
   buttonText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 

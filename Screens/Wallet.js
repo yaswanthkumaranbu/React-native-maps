@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 
 const Wallet = () => {
   const [credits, setCredits] = useState([
@@ -11,9 +17,19 @@ const Wallet = () => {
 
   const walletBalance = 5000;
   const transactionHistory = [
-    { id: 1, date: '2023-12-01', amount: -100, description: 'Purchase at Store' },
-    { id: 2, date: '2023-12-05', amount: 200, description: 'Received from John' },
-    { id: 3, date: '2023-12-10', amount: -50, description: 'Online Payment' },
+    {
+      id: 1,
+      date: "2023-12-01",
+      amount: -100,
+      description: "Purchase at Store",
+    },
+    {
+      id: 2,
+      date: "2023-12-05",
+      amount: 200,
+      description: "Received from John",
+    },
+    { id: 3, date: "2023-12-10", amount: -50, description: "Online Payment" },
   ];
 
   const renderTransactionItem = ({ item }) => (
@@ -30,7 +46,10 @@ const Wallet = () => {
   };
 
   const renderCreditItem = ({ item }) => (
-    <TouchableOpacity style={styles.creditItem} onPress={() => handleCreditPurchase(item.amount)}>
+    <TouchableOpacity
+      style={styles.creditItem}
+      onPress={() => handleCreditPurchase(item.amount)}
+    >
       <Text style={styles.creditAmount}>Buy {item.amount} Credits</Text>
     </TouchableOpacity>
   );
@@ -67,10 +86,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
   },
   card: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: "#4CAF50",
     padding: 20,
     borderRadius: 10,
     marginBottom: 20,
@@ -78,17 +97,17 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 10,
-    color: '#fff',
+    color: "#fff",
   },
   amount: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fff',
+    fontWeight: "bold",
+    color: "#fff",
   },
   creditsContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 15,
     borderRadius: 10,
     elevation: 3,
@@ -96,36 +115,36 @@ const styles = StyleSheet.create({
   },
   creditsTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 10,
   },
   creditItem: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     padding: 10,
     marginBottom: 10,
     borderRadius: 5,
-    alignItems: 'center',
+    alignItems: "center",
   },
   creditAmount: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   historyContainer: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 15,
     borderRadius: 10,
     elevation: 3,
   },
   historyTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 10,
   },
   transactionItem: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     padding: 10,
     marginBottom: 10,
     borderRadius: 5,

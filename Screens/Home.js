@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import MapView, { Marker } from "react-native-maps";
-import { createStackNavigator } from '@react-navigation/stack';
-import Coupens from './Coupens';
-import Wallet from './Wallet';
+import { createStackNavigator } from "@react-navigation/stack";
+import Coupens from "./Coupens";
+import Wallet from "./Wallet";
 import {
   StyleSheet,
   Pressable,
@@ -20,7 +20,6 @@ function Home() {
   const [to, setTo] = useState("");
 
   const Stack = createStackNavigator();
-
 
   const [mapRegion, setMapRegion] = useState({
     latitude: 37.78825,
@@ -49,54 +48,51 @@ function Home() {
   };
 
   return (
-
-      <View style={styles.container}>
-        <View style={styles.drawbutton}>
-          <Button title="=" onPress={() => drawer.current.openDrawer()} />
-        </View>
-        <MapView style={styles.map} region={mapRegion}>
-          <Marker coordinate={mapRegion} title="Marker"></Marker>
-        </MapView>
-        <View style={styles.top}>
+    <View style={styles.container}>
+      <View style={styles.drawbutton}>
+        <Button title="=" onPress={() => drawer.current.openDrawer()} />
+      </View>
+      <MapView style={styles.map} region={mapRegion}>
+        <Marker coordinate={mapRegion} title="Marker"></Marker>
+      </MapView>
+      <View style={styles.top}>
         <View style={styles.total}>
-
-        <View style={styles.row1}>
-        <Text style={styles.label1}>From</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={setFrom}
-          placeholder="Choose starting location"
-          value={from}
-        />
-      </View>
-      <View style={styles.row2}>
-        <Text style={styles.label2}>To</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={setTo}
-          placeholder="Choose destination location"
-          value={to}
-        />
-      </View>
-      </View>
-      
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Get Live Location"
-            onPress={executeUserLocation}
-            style={styles.button}
-          />
-        </View>
-        <View style={styles.butContainer}>
-            <Button
-              title="Start"
-              //   onPress={}
-              style={styles.but}
-              color="red"
+          <View style={styles.row1}>
+            <Text style={styles.label1}>From</Text>
+            <TextInput
+              style={styles.input}
+              onChangeText={setFrom}
+              placeholder="Choose starting location"
+              value={from}
             />
           </View>
+          <View style={styles.row2}>
+            <Text style={styles.label2}>To</Text>
+            <TextInput
+              style={styles.input}
+              onChangeText={setTo}
+              placeholder="Choose destination location"
+              value={to}
+            />
+          </View>
+        </View>
       </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Get Live Location"
+          onPress={executeUserLocation}
+          style={styles.button}
+        />
+      </View>
+      <View style={styles.butContainer}>
+        <Button
+          title="Start"
+          //   onPress={}
+          style={styles.but}
+          color="red"
+        />
+      </View>
+    </View>
   );
 }
 export default Home;
@@ -106,37 +102,34 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   row1: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginTop: 0,
   },
   row2: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginTop: -30,
   },
-  total:{
-flex:1,
-marginTop:-50
+  total: {
+    flex: 1,
+    marginTop: -50,
   },
   label1: {
     width: 60, // Adjust the width of the label according to your design
     marginRight: 10,
-    marginTop:70,
-    fontWeight: 'bold',
+    marginTop: 70,
+    fontWeight: "bold",
     fontSize: 18, // Adjust the font size based on your design
-
   },
   label2: {
     width: 60, // Adjust the width of the label according to your design
     marginRight: 10,
-    marginTop:70,
-    fontWeight: 'bold',
+    marginTop: 70,
+    fontWeight: "bold",
     fontSize: 18, // Adjust the font size based on your design
-
-
   },
- 
+
   top: {
     position: "absolute",
     top: 0,
@@ -151,14 +144,14 @@ marginTop:-50
     position: "absolute",
     bottom: 20,
     width: "100%",
-    right:20,
+    right: 20,
     alignItems: "flex-end",
   },
 
   buttonContainer: {
     position: "absolute",
     bottom: 20,
-    left:20,
+    left: 20,
     width: "100%",
     alignItems: "baseline",
   },
