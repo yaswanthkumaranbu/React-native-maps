@@ -27,6 +27,24 @@ function Home() {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
+  useEffect(() => {
+    // Request location permissions when the component mounts
+    requestLocationPermission();
+  }, []);
+
+  const requestLocationPermission = async () => {
+    try {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        console.error("Permission to access location denied");
+      } else {
+        executeUserLocation(); // If permission is granted, get user location
+      }
+    } catch (error) {
+      console.error("Error requesting location permission:", error);
+    }
+  };
+
   const userLocation = async () => {
     let { status } = await Location.requestBackgroundPermissionsAsync();
     if (status !== "granted") {
@@ -80,7 +98,7 @@ function Home() {
       <View style={styles.buttonContainer}>
         <Button
           title="Get Live Location"
-          onPress={executeUserLocation}
+          onPress={userLocation}
           style={styles.button}
         />
       </View>
