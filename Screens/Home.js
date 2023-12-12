@@ -21,30 +21,14 @@ function Home() {
 
   const Stack = createStackNavigator();
 
+  const [isMarker,setIsMarker]=useState(false)
+
   const [mapRegion, setMapRegion] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
+    latitude: 20.5937,
+    longitude: 78.9629,
+    latitudeDelta: 20,
+    longitudeDelta: 20,
   });
-  useEffect(() => {
-    // Request location permissions when the component mounts
-    requestLocationPermission();
-  }, []);
-
-  const requestLocationPermission = async () => {
-    try {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        console.error("Permission to access location denied");
-      } else {
-        executeUserLocation(); // If permission is granted, get user location
-      }
-    } catch (error) {
-      console.error("Error requesting location permission:", error);
-    }
-  };
-
   const userLocation = async () => {
     let { status } = await Location.requestBackgroundPermissionsAsync();
     if (status !== "granted") {
@@ -59,6 +43,7 @@ function Home() {
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     });
+    setIsMarker(true);
     console.log(location);
   };
   const executeUserLocation = () => {
@@ -71,7 +56,7 @@ function Home() {
         <Button title="=" onPress={() => drawer.current.openDrawer()} />
       </View>
       <MapView style={styles.map} region={mapRegion}>
-        <Marker coordinate={mapRegion} title="Marker"></Marker>
+       {isMarker && <Marker coordinate={mapRegion} title="Marker"></Marker>} 
       </MapView>
       <View style={styles.top}>
         <View style={styles.total}>
@@ -98,7 +83,7 @@ function Home() {
       <View style={styles.buttonContainer}>
         <Button
           title="Get Live Location"
-          onPress={userLocation}
+          onPress={executeUserLocation}
           style={styles.button}
         />
       </View>
